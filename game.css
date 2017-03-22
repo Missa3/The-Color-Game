@@ -1,18 +1,29 @@
 body {
     background-color: #232323;
     color: white;
+    margin: 0;
 }
 
 h1 {
     font-size: 3em;
     text-align: center;
+    background: steelblue;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: normal;
+    line-height: 1;
+    padding: 2% 0;
+
+}
+#colorDisplay{
+  font-size: 150%
 }
 
 #container {
     max-width: 800px;
     width: 80%;
     margin: 0 auto;
-    ;
+
 }
 
 .square {
@@ -21,4 +32,20 @@ h1 {
     margin: 1.666%;
     width: 30%;
     float: left;
+}
+
+#stripe {
+  background: white;
+  height: 30px;
+  text-align: center;
+  color: black;
+}
+
+.selected {
+  background: blue;
+}
+
+span #message {
+  width: 50px;
+  background: red;
 }
