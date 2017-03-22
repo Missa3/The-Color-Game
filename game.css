@@ -1,3 +1,24 @@
-body{
-  background-color: #232323
+body {
+    background-color: #232323;
+    color: white;
+}
+
+h1 {
+    font-size: 3em;
+    text-align: center;
+}
+
+#container {
+    max-width: 800px;
+    width: 80%;
+    margin: 0 auto;
+    ;
+}
+
+.square {
+    background: red;
+    padding-bottom: 30%;
+    margin: 1.666%;
+    width: 30%;
+    float: left;
 }
