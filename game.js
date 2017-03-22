@@ -8,20 +8,37 @@ var color = [
 ];
 
 var square = document.querySelectorAll('.square');
-var pickedColor = color[0];
+var pickedColor = picked();
 var colorDisplay = document.querySelector('#colorDisplay');
 colorDisplay.innerHTML = pickedColor;
+var messageDisplay = document.getElementById('message');
 
 for (var i = 0; i < square.length; i++) {
+    //color of each sqaure
     square[i].style.background = color[i];
 
     square[i].addEventListener('click', function(e) {
-      var colorOfSquare = this.style.background;
+        //color of square clicked
+        var colorOfSquare = this.style.background;
+        //compares color of clicked sqaure to choosen color
         if (colorOfSquare == pickedColor) {
-            alert('Right! Good Job');
+            messageDisplay.textContent = "Correct";
+            changeColor();
         } else {
-          alert('Try again');
+            this.style.background = " #232323";
+            messageDisplay.textContent = "Try Again";
         }
 
     });
+}
+
+function changeColor(color) {
+    for (var i = 0; i < square.length; i++) {
+        square[i].style.background = pickedColor;
+    }
+}
+
+function picked() {
+    var random = Math.floor(Math.random() * color.length)
+    return color[random];
 }
