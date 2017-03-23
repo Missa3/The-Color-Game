@@ -14,10 +14,11 @@ var hard = document.getElementById('hard');
 easy.addEventListener('click', function(e) {
     easy.classList.add("selected");
     hard.classList.remove("selected");
+
     for (var i = 3; i < numOfSquares; i++) {
         square[i].style.display = "none";
     }
-    numOfSquares = 3;
+      numOfSquares = 3;
     reset(numOfSquares);
 
 
@@ -26,10 +27,10 @@ easy.addEventListener('click', function(e) {
 hard.addEventListener('click', function(e) {
     easy.classList.remove("selected");
     hard.classList.add("selected");
+    numOfSquares = 6;
     for (var i = 3; i < numOfSquares; i++) {
         square[i].style.display = "block";
     }
-    numOfSquares = 6;
     reset(numOfSquares);
 });
 
