@@ -1,36 +1,43 @@
-var numOfSquares = 6;
-var color = generateRandomColors(numOfSquares);
-var pickedColor = picked();
+
+var color;
+var pickedColor;
+var square;
+var numOfSquares = 3;
 var colorDisplay = document.querySelector('#colorDisplay');
-colorDisplay.innerHTML = pickedColor;
 var messageDisplay = document.getElementById('message');
 var h1 = document.getElementsByTagName('h1')[0];
 var newColors = document.getElementById('newColors');
-newColors.textContent = "New Colors";
 var mode = document.querySelectorAll('.mode');
 var container = document.querySelector('#container');
-var square = document.querySelectorAll('.square');
-for (var i = 0; i < numOfSquares; i++) {
-    container.innerHTML += "<div class='square'></div>";
-    var square = document.querySelectorAll('.square');
-    square[i].style.background = color[i];
+
+mode[0].classList.add("selected");
+reset(numOfSquares);
+
+newColors.addEventListener('click', function() {
+    reset(numOfSquares);
+});
+
+for (var i = 0; i < mode.length; i++) {
+    mode[i].addEventListener('click', function() {
+        for (var j = 0; j < mode.length; j++) {
+            mode[j].classList.remove("selected");
+        }
+        this.classList.add("selected");
+        if (this.textContent === 'Easy') {
+            numOfSquares = 3
+        } else if (this.textContent === 'Medium') {
+            numOfSquares = 6;
+        } else {
+            numOfSquares = 9
+        }
+        reset(numOfSquares);
+    });
 }
-
-for (var i = 0; i < numOfSquares; i++) {
-    //color of each square
-
-    square[i].style.background = color[i];
-
-}
-rightWrong();
 
 function rightWrong() {
     for (var i = 0; i < numOfSquares; i++) {
         square[i].addEventListener('click', function() {
-            //console.log(this.style.background);
-            //color of square clicked
             var colorOfSquare = this.style.background;
-            //compares color of clicked square to choosen color
             if (colorOfSquare === pickedColor) {
                 messageDisplay.textContent = "Correct!";
                 newColors.textContent = "Play Again?"
@@ -38,31 +45,10 @@ function rightWrong() {
             } else {
                 this.style.background = "#232323";
                 messageDisplay.textContent = "Try Again?";
-
             }
-
         });
     }
 }
-
-
-for (var i = 0; i < mode.length; i++) {
-
-    mode[i].addEventListener('click', function() {
-        for (var j = 0; j < mode.length; j++) {
-            mode[j].classList.remove("selected");
-        }
-        this.classList.add("selected");
-        (this.textContent === 'Easy') ? numOfSquares = 3: numOfSquares = 6;
-        reset(numOfSquares);
-    });
-
-}
-
-
-newColors.addEventListener('click', function() {
-    reset(numOfSquares);
-});
 
 function reset(numOfSquares) {
 
